@@ -1,4 +1,83 @@
-.body-main{
+.body-main {
     display: flex;
     flex-direction: row;
+    /* height: 94vh; */
+    height: auto;
+    min-height: 94vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: row;
+}
+
+.filter-container {
+    width: 13%;
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    background-color: rgb(245, 245, 245);
+}
+
+.filter-year-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.filter-container h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.filter {
+    width: 100%;
+    padding-top: 15px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: 'center';
+    padding-top: 10px;
+
+}
+
+
+
+.detail-container {
+    width: 87%;
+    
+}
+
+
+.detail-box-canvas {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+
+}
+
+.item-list-box {
+    display: flex;
+    flex-direction: column;
+}
+
+span.year {
+    font-weight: 600;
+    color: red;
+}
+
+ul.filter {
+    padding-top: 15px;
+    margin: 0;
+    padding: 0;
 }

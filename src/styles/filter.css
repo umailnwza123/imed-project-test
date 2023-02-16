@@ -1,0 +1,8 @@
+.filter-container {
+    width: 15%;
+    flex-direction: column;
+    display: flex;
+    background-color: red;
+    padding-left: 4px;
+    padding-right: 4px;
+}

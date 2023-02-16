@@ -9,16 +9,10 @@ export  const fetchAllNobelPrice = () => {
 
     })
     .then((res)=>{
-        console.log('res', res)
+        return res.data
     })
-    // axios.get('http://api.nobelprize.org/2.1/nobelPrizes')
-    //     .then(function (response) {
-    //         // handle success
-    //         console.log(response)
-    //         //console.log(response.data.nobelPrizes);
-    //     })
-    //     .catch(function (error) {
-    //         // handle error
-    //         console.log(error);
-    //     })
+    .catch((err) => {
+        console.log(err)
+    })
+    return request
 }
