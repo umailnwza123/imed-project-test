@@ -3,7 +3,7 @@
     flex-direction: row;
     /* height: 94vh; */
     height: auto;
-    min-height: 94vh;
+    min-height: 93vh;
     box-sizing: border-box;
     display: flex;
     justify-content: row;
@@ -137,7 +137,7 @@
 
 .person-motivation i{
     font-family: sans-serif;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
     font-size: .8rem;
 

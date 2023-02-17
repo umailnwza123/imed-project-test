@@ -10,6 +10,7 @@ export default function Filter({ nobelPrizes, callback }) {
     let dispatch = useDispatch()
     let selectingYear = []
     let checkYear = []
+    
 
 
     const sortYear = (dataArray) => {
@@ -45,6 +46,7 @@ export default function Filter({ nobelPrizes, callback }) {
         Object.keys(groupNobelPrizes).forEach((item, index) => {
             FinalNobel.push({ year: item, [item]: groupNobelPrizes[item], prizeAmount: sumArray[index] })
         })
+        //console.log(sortYear(FinalNobel))
         dispatch(Aciton.setAllNobelPrized(sortYear(FinalNobel)))
         setNobelPrizeState(sortYear(FinalNobel))
     }, [nobelPrizes])
@@ -69,19 +71,19 @@ export default function Filter({ nobelPrizes, callback }) {
                                 <input type="checkbox"
 
                                     onClick={() => {
-                                        if(selectingYear.length <= 0){
-                                            selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
-                                        }else{
-                                            if(selectingYear.filter((itemFilter) => itemFilter.year === parseInt(Object.keys(item)[0])).length > 0){
+                                        if (selectingYear.length <= 0) {
+                                            selectingYear.push({ year: parseInt(Object.keys(item)[0]), item: item })
+                                        } else {
+                                            if (selectingYear.filter((itemFilter) => itemFilter.year === parseInt(Object.keys(item)[0])).length > 0) {
                                                 let indexToremove = selectingYear.findIndex((itemIndex) => itemIndex.year === parseInt(Object.keys(item)[0]))
-                                                if(indexToremove > -1){
+                                                if (indexToremove > -1) {
                                                     selectingYear.splice(indexToremove, 1)
                                                     console.log(selectingYear)
                                                 }
-                                            }else{
-                                                selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
+                                            } else {
+                                                selectingYear.push({ year: parseInt(Object.keys(item)[0]), item: item })
                                             }
-                                           
+
                                         }
                                         dispatch(Aciton.selectedYearAction(selectingYear))
                                     }} />
