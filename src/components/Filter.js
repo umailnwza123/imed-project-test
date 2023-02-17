@@ -10,7 +10,12 @@ export default function Filter({ nobelPrizes, callback }) {
     let dispatch = useDispatch()
     let selectingYear = []
     let checkYear = []
-    
+
+
+    const sortYear = (dataArray) => {
+        return dataArray.sort(
+            (y1, y2) => (y1.year < y2.year) ? 1 : (y1.year > y2.year) ? -1 : 0);
+    }
 
     const groupByYear = (array, key) => {
         return array.reduce((result, curr) => {
@@ -40,9 +45,8 @@ export default function Filter({ nobelPrizes, callback }) {
         Object.keys(groupNobelPrizes).forEach((item, index) => {
             FinalNobel.push({ year: item, [item]: groupNobelPrizes[item], prizeAmount: sumArray[index] })
         })
-        dispatch(Aciton.setAllNobelPrized(FinalNobel.reverse()))
-        console.log(FinalNobel.reverse())
-        setNobelPrizeState(FinalNobel.reverse())
+        dispatch(Aciton.setAllNobelPrized(sortYear(FinalNobel)))
+        setNobelPrizeState(sortYear(FinalNobel))
     }, [nobelPrizes])
 
 
@@ -62,35 +66,25 @@ export default function Filter({ nobelPrizes, callback }) {
                                 <span>{Object.keys(item)[0]}<label style={{ fontSize: .65 + 'rem', marginLeft: 5 + 'px' }}>
                                     ({item.prizeAmount})
                                 </label></span>
-                                <input type="checkbox"  
-                                
-                                onClick={()=>{
-                                    
-                                    if(checkYear.length <= 0){
-                                        checkYear.push(Object.keys(item)[0])
-                                        selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
-                                    }else{
-                                       if(checkYear.includes(Object.keys(item)[0])){
-                                           if(checkYear.indexOf(Object.keys(item)[0]) > -1){
-                                            checkYear.splice(checkYear.indexOf(Object.keys(item)[0]), 1)
-                                            
-                                            let year = Object.keys(item)[0]
-                                            let index = selectingYear.findIndex((item) => {
-                                               return item.year === year
-                                            })
-                                            selectingYear.splice(index, 1)
-                                           }
-                                           console.log('after remove ', checkYear)
+                                <input type="checkbox"
 
-                                       }else{
-                                        selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
-                                        checkYear.push(Object.keys(item)[0])
-                                       }
-                                    }
-                                    
-                                    dispatch(Aciton.selectedYearAction(selectingYear))
-                                    
-                                }} />
+                                    onClick={() => {
+                                        if(selectingYear.length <= 0){
+                                            selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
+                                        }else{
+                                            if(selectingYear.filter((itemFilter) => itemFilter.year === parseInt(Object.keys(item)[0])).length > 0){
+                                                let indexToremove = selectingYear.findIndex((itemIndex) => itemIndex.year === parseInt(Object.keys(item)[0]))
+                                                if(indexToremove > -1){
+                                                    selectingYear.splice(indexToremove, 1)
+                                                    console.log(selectingYear)
+                                                }
+                                            }else{
+                                                selectingYear.push({year: parseInt(Object.keys(item)[0]), item: item})
+                                            }
+                                           
+                                        }
+                                        dispatch(Aciton.selectedYearAction(selectingYear))
+                                    }} />
 
                             </div>
                         </div>

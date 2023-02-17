@@ -49,7 +49,7 @@
 
 .detail-container {
     width: 87%;
-    
+
 }
 
 
@@ -59,16 +59,95 @@
     display: flex;
     flex-direction: column;
     padding-top: 15px;
-    align-items: flex-start;
     padding-left: 20px;
     padding-bottom: 20px;
 
 
 }
 
-.item-list-box {
+.nobel-container {
     display: flex;
     flex-direction: column;
+    padding-right: 25px;
+    padding-left: 15px;
+}
+
+.nobel-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 15px;
+    border: 1px solid rgb(229, 227, 227);
+
+}
+
+.nobel-card {
+    border: .65px solid rgb(244, 243, 243);
+    width: 18%;
+    margin-left: 10px;
+    overflow: hidden;
+    border-radius: 6px;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.nobel-card-header {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #F4D97C;
+
+}
+
+.nobel-card-header span {
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 5px;
+}
+
+.nobel-card-body {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.pernal-nobel-card {
+    margin-top: 10px;
+    padding: 6px;
+    background-color: #FFF8E3;
+    border-radius: 6px;
+    
+}
+
+.person-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.person-name label{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.person-motivation{
+    padding: 8px;
+}
+
+.person-motivation i{
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: .8rem;
+
+}
+
+.item-header-year {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 15px;
 }
 
 span.year {

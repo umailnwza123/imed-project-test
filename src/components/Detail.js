@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/body.css'
 import { useSelector } from 'react-redux'
+import { BsFillAwardFill, BsFileEarmarkPerson } from 'react-icons/bs'
+import NobelCard from './NobelCard'
 
 export default function Detail({ nobelOrdered }) {
 
@@ -8,11 +10,6 @@ export default function Detail({ nobelOrdered }) {
 
     const [NobelShow, setNobelShow] = useState([])
 
-
-
-    useEffect(() => {
-        console.log(NobelReducer)
-    }, [NobelReducer])
     return (
         <div className="detail-container">
             <div className='detail-box-canvas' >
@@ -24,33 +21,13 @@ export default function Detail({ nobelOrdered }) {
                             NobelReducer.NobelPrizes.length > 0 ?
                                 NobelReducer.NobelPrizes.map((item, index) => {
                                     return (
-                                        <div className="item-list-box" >
-                                            <h6 key={index}>
-                                                Year {item.year}
-                                            </h6>
-                                            <div  >
-                                                {
-                                                    item[item.year].map((itemList) => {
-                                                        return (
-                                                            <div>
-                                                                <p style={{backgroundColor: 'yellow'}}>
-                                                                    {itemList.categoryFullName.en}
-                                                                </p>
-                                                                {
-                                                                    itemList.laureates.map((itemperson) => {
-                                                                        return(
-                                                                            <div>
-                                                                                <p>
-                                                                                  {itemperson.fullName === undefined ? 'No name' : itemperson.fullName.en}
-                                                                                </p>
-                                                                            </div>
-                                                                        )
-                                                                    })
-                                                                }
-                                                            </div>
-                                                        )
-                                                    })}
+                                        <div key={index} className="nobel-container" >
+                                            <div className='item-header-year'>
+                                                <h6 key={index}>
+                                                    Year {item.year}
+                                                </h6>
                                             </div>
+                                            <NobelCard item={item} />
                                         </div>
                                     )
                                 })
@@ -59,9 +36,14 @@ export default function Detail({ nobelOrdered }) {
                             :
                             NobelReducer.selectedYear.map((item, index) => {
                                 return (
-                                    <h6 key={index}>
-                                        Year {item.year}
-                                    </h6>
+                                    <div key={index} className="item-list-box">
+                                        <div className='item-header-year'>
+                                            <h6 key={index}>
+                                                Year {item.year}
+                                            </h6>
+                                        </div>
+                                        <NobelCard item={item.item} />
+                                    </div>
                                 )
                             })
                 }
